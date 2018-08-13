@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from keras.layers import Input, Dense, Lambda, Conv2D, Conv2DTranspose, Activation, LeakyReLU
+from keras.layers import Input, Dense, Lambda, Conv2D, Conv2DTranspose, Activation, LeakyReLU, Concatenate
 from keras.layers import BatchNormalization, GlobalAveragePooling2D, Reshape
 import keras.backend as K
 from keras.models import Model
@@ -90,7 +90,7 @@ else:
 generator = DC_Generator(output_shape=X.shape[1:], dc_shape=dc_shape)
 discriminator = DC_Discriminator(input_shape=X.shape[1:], layer_num=dis_layer_num)
 
-Real_image                         = Input(shape=(28,28,1))
+Real_image                         = Input(shape=X.shape[1:])
 Noise_input                        = Input(shape=(128,))
 Fake_image                         = generator(Noise_input)
 Discriminator_real_out             = discriminator(Real_image)
@@ -99,9 +99,10 @@ Discriminator_real_average_out     = Lambda(average, output_shape=average_output
 Discriminator_fake_average_out     = Lambda(average, output_shape=average_output_shape, name='discriminarot_fake_average_out')(Discriminator_fake_out)
 
 Real_Fake_relativistic_average_out = Minus(name='Real_minus_mean_fake')([Discriminator_real_out, Discriminator_fake_average_out])
-Real_Fake_relativistic_average_out = Activation('sigmoid')(Real_Fake_relativistic_average_out)
 Fake_Real_relativistic_average_out = Minus(name='Fake_minus_mean_real')([Discriminator_fake_out, Discriminator_real_average_out])
-Fake_Real_relativistic_average_out = Activation('sigmoid')(Fake_Real_relativistic_average_out)
+if LOSS=='BXE':
+    Real_Fake_relativistic_average_out = Activation('sigmoid')(Real_Fake_relativistic_average_out)
+    Fake_Real_relativistic_average_out = Activation('sigmoid')(Fake_Real_relativistic_average_out)
 Discriminator_Relativistic_out = Concatenate()([Real_Fake_relativistic_average_out, Fake_Real_relativistic_average_out])
 
 epsilon=0.000001
