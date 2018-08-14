@@ -20,6 +20,7 @@ python RaGAN_CustomLayers.py [dataset] [loss]
 
 Custom Loss
 [[Colab]](https://drive.google.com/file/d/11NlU_Z829NXrHCdWx4ROIIcmfnaxNdR2/view?usp=sharing)[[NBViewer]](https://nbviewer.jupyter.org/github/IShengFang/Relativistic-average-GAN-Keras/blob/master/RaGAN_with_Custom_Loss.ipynb)
+
 Custom Layer
 [[Colab]](https://drive.google.com/file/d/1pbUCguHX1h_yeDYMdFcYa0CYuZvtpUik/view?usp=sharing)[[NBViewer]](https://nbviewer.jupyter.org/github/IShengFang/Relativistic-average-GAN-Keras/blob/master/RaGAN_with_Custom_Layers.ipynb)
 
