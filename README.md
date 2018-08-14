@@ -56,6 +56,7 @@ Custom Layer
 ### TL;DR
 ![](https://ajolicoeur.files.wordpress.com/2018/06/screenshot-from-2018-06-30-11-04-05.png?w=656)
 ### What is different with original GAN
+For better math equations rendering, check out [HackMD Version](https://hackmd.io/s/r1VlR5CBm)
 #### GAN
 The GAN is the two player game which subject as below
 $$\max_G\min_D V(G,D)$$
