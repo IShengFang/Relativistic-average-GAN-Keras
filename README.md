@@ -6,14 +6,22 @@ The implementation [Relativistic average GAN](https://ajolicoeur.wordpress.com/r
 [[original code(pytorch)]](https://github.com/AlexiaJM/RelativisticGAN)
 
 ## How to Run?
+### Python3 Script
 ``` bash
 mkdir result
 python RaGAN_CustomLoss.py [dataset] [loss] 
 python RaGAN_CustomLayers.py [dataset] [loss] 
 ```
-[dataset]: mnist fashion_mnist cifar10
+[dataset]: mnist, fashion_mnist, cifar10
 
 [loss]: BXE for binary_crossentropy, LS for Least-Squares
+
+### Jupyter notebook
+
+Custom Loss
+[[Colab]](https://drive.google.com/file/d/11NlU_Z829NXrHCdWx4ROIIcmfnaxNdR2/view?usp=sharing)[[NBViewer]](https://nbviewer.jupyter.org/github/IShengFang/Relativistic-average-GAN-Keras/blob/master/RaGAN_with_Custom_Loss.ipynb)
+Custom Layer
+[[Colab]](https://drive.google.com/file/d/1pbUCguHX1h_yeDYMdFcYa0CYuZvtpUik/view?usp=sharing)[[NBViewer]](https://nbviewer.jupyter.org/github/IShengFang/Relativistic-average-GAN-Keras/blob/master/RaGAN_with_Custom_Layers.ipynb)
 
 
 ## Result
