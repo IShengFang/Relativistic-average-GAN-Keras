@@ -89,7 +89,7 @@ epsilon=0.000001
 if LOSS=='BXE':
     def relativistic_discriminator_loss(y_true, y_pred):
         '''
-        y_true and y_pred are be used
+        y_true and y_pred are not be used
         use keras tensor to compute loss
 
 
@@ -97,7 +97,7 @@ if LOSS=='BXE':
         return -(K.mean(K.log(K.sigmoid(Real_Fake_relativistic_average_out)+epsilon ),axis=0)+K.mean(K.log(1-K.sigmoid(Fake_Real_relativistic_average_out)+epsilon),axis=0))
     def relativistic_generator_loss(y_true, y_pred):
         '''
-        y_true and y_pred are be used
+        y_true and y_pred are not be used
         use keras tensor to compute loss
 
         '''
@@ -105,14 +105,14 @@ if LOSS=='BXE':
 elif LOSS=='LS':
     def relativistic_discriminator_loss(y_true, y_pred):
         '''
-        y_true and y_pred are be used
+        y_true and y_pred are not be used
         use keras tensor to compute loss
 
         '''
         return K.mean(K.pow(Real_Fake_relativistic_average_out-1,2),axis=0)+K.mean(K.pow(Fake_Real_relativistic_average_out+1,2),axis=0)
     def relativistic_generator_loss(y_true, y_pred):
         '''
-        y_true and y_pred are be used
+        y_true and y_pred are not be used
         use keras tensor to compute loss
 
         '''
@@ -126,8 +126,8 @@ generator_train.summary()
 discriminator_train = Model([Noise_input, Real_image], [Discriminator_real_out, Discriminator_fake_out])
 generator.trainable = False
 discriminator.trainable=True
-discriminator_train.summary()
 discriminator_train.compile(OPT, loss=[relativistic_discriminator_loss, None])
+discriminator_train.summary()
 
 dummy_y = np.zeros((BATCHSIZE, 1), dtype=np.float32)
 
