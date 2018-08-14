@@ -99,6 +99,8 @@ We can use keras.backend to deal with it, but that means we need to custom loss.
         - Train our RaGAN easily with keras default loss
     - Cons:
         - Write custom layers to implement it.
+    - [[Colab]](https://drive.google.com/file/d/1pbUCguHX1h_yeDYMdFcYa0CYuZvtpUik/view?usp=sharing)[[NBViewer]](https://nbviewer.jupyter.org/github/IShengFang/Relativistic-average-GAN-Keras/blob/master/RaGAN_with_Custom_Layers.ipynb)
+
 
 2. Custom Loss
     - Pros:
@@ -106,3 +108,4 @@ We can use keras.backend to deal with it, but that means we need to custom loss.
         - Custom loss is easy to change loss.
     - Cons:
         - Write custom loss with keras.backend to implement it.
+    - [[Colab]](https://drive.google.com/file/d/11NlU_Z829NXrHCdWx4ROIIcmfnaxNdR2/view?usp=sharing)[[NBViewer]](https://nbviewer.jupyter.org/github/IShengFang/Relativistic-average-GAN-Keras/blob/master/RaGAN_with_Custom_Loss.ipynb)
