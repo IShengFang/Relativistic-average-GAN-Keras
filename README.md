@@ -110,3 +110,9 @@ We can use keras.backend to deal with it, but that means we need to custom loss.
     - Cons:
         - Write custom loss with keras.backend to implement it.
     - [[Colab]](https://drive.google.com/file/d/11NlU_Z829NXrHCdWx4ROIIcmfnaxNdR2/view?usp=sharing)[[NBViewer]](https://nbviewer.jupyter.org/github/IShengFang/Relativistic-average-GAN-Keras/blob/master/RaGAN_with_Custom_Loss.ipynb)
+
+#### Code
+##### Custom Loss
+[[Colab]](https://drive.google.com/file/d/11NlU_Z829NXrHCdWx4ROIIcmfnaxNdR2/view?usp=sharing)[[NBViewer]](https://nbviewer.jupyter.org/github/IShengFang/Relativistic-average-GAN-Keras/blob/master/RaGAN_with_Custom_Loss.ipynb)[[python script]](https://github.com/IShengFang/Relativistic-average-GAN-Keras/blob/master/RaGAN_CustomLoss.py)
+##### Custom Layer
+[[Colab]](https://drive.google.com/file/d/1pbUCguHX1h_yeDYMdFcYa0CYuZvtpUik/view?usp=sharing)[[NBViewer]](https://nbviewer.jupyter.org/github/IShengFang/Relativistic-average-GAN-Keras/blob/master/RaGAN_with_Custom_Layers.ipynb)[[python script]](https://github.com/IShengFang/Relativistic-average-GAN-Keras/blob/master/RaGAN_CustomLayers.py)
