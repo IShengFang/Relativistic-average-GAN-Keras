@@ -9,12 +9,14 @@ The implementation [Relativistic average GAN](https://ajolicoeur.wordpress.com/r
 ### Python3 Script
 ``` bash
 mkdir result
-python RaGAN_CustomLoss.py [dataset] [loss] 
-python RaGAN_CustomLayers.py [dataset] [loss] 
+python RaGAN_CustomLoss.py --dataset [dataset] --loss [loss] 
+python RaGAN_CustomLayers.py --dataset [dataset] --loss [loss] 
 ```
-[dataset]: mnist, fashion_mnist, cifar10
+[dataset]: mnist, *fashion_mnist*, cifar10
 
-[loss]: BXE for binary_crossentropy, LS for Least-Squares
+[loss]: *BXE* for Binary Crossentropy, LS for Least Squares
+
+*italic arguments* are default
 
 ### Jupyter notebook
 
