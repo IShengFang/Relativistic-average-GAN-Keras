@@ -12,17 +12,38 @@ import sys
 import os
 import pickle
 
-arg_list = sys.argv
+import os
+import pickle
+import argparse
+
 plt.switch_backend('agg')
-EPOCHS = 100
-BATCHSIZE = 64
-TRAINING_RATIO =1
-DATASET = arg_list[1] # 'mnist', 'fashion_mnist'  'cifar10'
-LOSS = arg_list[2] #'BXE' 'LS'
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument('--epochs', type=int, default=100)
+parser.add_argument('--batch_size', type=int, default=64)
+parser.add_argument('--training_ratio', type=int, default=1)
+parser.add_argument('--lr', type=float, default=2e-4, help='Learning rate')
+parser.add_argument('--beta_1', type=float, default=0.5)
+parser.add_argument('--beta_2', type=float, default=0.999)
+parser.add_argument('--loss', type=str, default='BXE', help='Choose Loss: BXE for binary cross entropy, LS for least square')
+parser.add_argument('--dataset', type=str, default='fashion_mnist', help='Choose dataset: mnist, fashion_mnist, cifar10')
+
+
+
+args = parser.parse_args()
+
+EPOCHS = args.epochs
+BATCHSIZE = args.batch_size
+TRAINING_RATIO =args.training_ratio
+DATASET = args.dataset
+LOSS = args.loss
 GENERATE_ROW_NUM = 10
-OPT = Adam(lr=0.0002, beta_1=0.5, beta_2=0.999)
+OPT = Adam(lr=args.lr, beta_1=args.beta_1, beta_2=args.beta_2)
 
 STAMP = '{}_{}'.format(DATASET, LOSS)
+
+print(STAMP)
 
 if not os.path.isdir('result/'+STAMP):
     print('mkdir result/{}'.format(STAMP))
