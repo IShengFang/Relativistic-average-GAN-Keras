@@ -74,7 +74,7 @@ RaGAN's Loss function does not optimize discriminator to distinguish data real o
 >the discriminator estimates the probability that the given real data is more realistic than a randomly sampled fake data.
 [paper subsection.4.1](https://arxiv.org/pdf/1807.00734.pdf#subsection.4.1)
 
-Given Discriminator output $D(x)=\text{sigmoid}(C(x))$
+Given Discriminator output ![formula](https://render.githubusercontent.com/render/math?math=D(x)=\text{sigmoid}(C(x)))
 Origin GAN Loss is as below,
 $$L_D = -\mathbb{E}_{x_{real}\sim\mathbb{P}_{real}}[\log D(x_{real})]-\mathbb{E}_{x_{fake}\sim\mathbb{P}_{fake}}[\log ( 1-D(x_{fake}))]$$
 $$L_G = -\mathbb{E}_{x_{fake}\sim\mathbb{P}_{fake}}[\log D(x_{fake})]$$
