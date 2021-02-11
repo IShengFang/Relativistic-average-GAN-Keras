@@ -79,16 +79,16 @@ RaGAN's Loss function does not optimize discriminator to distinguish data real o
 Given Discriminator output ![formula](https://render.githubusercontent.com/render/math?math=D(x)=\text{sigmoid}(C(x)))
 Origin GAN Loss is as below,
 
-![formula](https://render.githubusercontent.com/render/math?math=L_D=-\mathbb{E}_{x_{real}\sim\mathbb{P}_{real}}[\log D(x_{real})]-\mathbb{E}_{x_{fake}\sim\mathbb{P}_{fake}}[\log ( 1-D(x_{fake}))])
+![formula](https://render.githubusercontent.com/render/math?math=L_D=-\mathbb{E}_{x_{real}\sim\mathbb{P}_{real}}[\logD(x_{real})]-\mathbb{E}_{x_{fake}\sim\mathbb{P}_{fake}}[\log ( 1-D(x_{fake}))])
 
-![formula](https://render.githubusercontent.com/render/math?math=L_G=-\mathbb{E}_{x_{fake}\sim\mathbb{P}_{fake}}[\log D(x_{fake})])
+![formula](https://render.githubusercontent.com/render/math?math=L_G=-\mathbb{E}_{x_{fake}\sim\mathbb{P}_{fake}}[\logD(x_{fake})])
 
 
 Relativistic average output is ![formula](https://render.githubusercontent.com/render/math?math=\tilde{D}(x_{real})=\text{sigmoid}(C(x_{real})-\mathbb{E}_{x_{fake}\sim\mathbb{P}_{fake}}C(x_{fake}))) and ![formula](https://render.githubusercontent.com/render/math?math=\tilde{D}(x_{fake})=\text{sigmoid}(C(x_{fake})-\mathbb{E}_{x_{real}\sim\mathbb{P}_{real}}C(x_{real})))
 
 RaGAN's Loss is as below,
-![formula](https://render.githubusercontent.com/render/math?math=L_D=-\mathbb{E}_{x_{real}\sim\mathbb{P}_{real}}[\log \tilde{D}(x_{real})]-\mathbb{E}_{x_{fake}\sim\mathbb{P}_{fake}}[\log ( 1-\tilde{D}(x_{fake}))])
-![formula](https://render.githubusercontent.com/render/math?math=L_G=-\mathbb{E}_{x_{fake}\sim\mathbb{P}_{fake}}[\log \tilde{D}(x_{fake})]-\mathbb{E}_{x_{real}\sim\mathbb{P}_{real}}[\log ( 1-\tilde{D}(x_{real}))])
+![formula](https://render.githubusercontent.com/render/math?math=L_D=-\mathbb{E}_{x_{real}\sim\mathbb{P}_{real}}[\log\tilde{D}(x_{real})]-\mathbb{E}_{x_{fake}\sim\mathbb{P}_{fake}}[\log(1-\tilde{D}(x_{fake}))])
+![formula](https://render.githubusercontent.com/render/math?math=L_G=-\mathbb{E}_{x_{fake}\sim\mathbb{P}_{fake}}[\log\tilde{D}(x_{fake})]-\mathbb{E}_{x_{real}\sim\mathbb{P}_{real}}[\log(1-\tilde{D}(x_{real}))])
 
 we can also add relativistic average in Least Square GAN or any other GAN
 ![](https://cdn-images-1.medium.com/max/800/1*QKG1fVOMjGlVUvICYmz8vQ.png)
@@ -98,8 +98,8 @@ Modified by [Jonathan Hui](https://medium.com/@jonathan_hui/gan-rsgan-ragan-a-ne
 We got loss, so just code it. :smile:
 Just kidding, we have two approaches to implement RaGAN.
 The important part of implementation is discriminator output.
-![formula](https://render.githubusercontent.com/render/math?math=\tilde{D}(x_{real})=\text{sigmoid}(C(x_{real})-\mathbb{E}_{x_{fake}\sim\mathbb{P}_{fake}}C(x_{fake}))$$ and $$\tilde{D}(x_{fake})=\text{sigmoid}(C(x_{fake})-\mathbb{E}_{x_{real}\sim\mathbb{P}_{real}}C(x_{real})))
-We need to average $C(x_{real})$ and $C(x_{fake})$. We also need "minus" to get ![formula](https://render.githubusercontent.com/render/math?math=C(x_{real})-\mathbb{E}_{x_{fake}\sim\mathbb{P}_{fake}}C(x_{fake})) and ![formula](https://render.githubusercontent.com/render/math?math=C(x_{fake})-\mathbb{E}_{x_{real}\sim\mathbb{P}_{real}}C(x_{real})).
+![formula](https://render.githubusercontent.com/render/math?math=\tilde{D}(x_{real})=\text{sigmoid}(C(x_{real})-\mathbb{E}_{x_{fake}\sim\mathbb{P}_{fake}}C(x_{fake}))) and ![formula](https://render.githubusercontent.com/render/math?math=\tilde{D}(x_{fake})=\text{sigmoid}(C(x_{fake})-\mathbb{E}_{x_{real}\sim\mathbb{P}_{real}}C(x_{real})))
+We need to average ![formula](https://render.githubusercontent.com/render/math?math=C(x_{real})) and ![formula](https://render.githubusercontent.com/render/math?math=C(x_{fake})). We also need "minus" to get ![formula](https://render.githubusercontent.com/render/math?math=C(x_{real})-\mathbb{E}_{x_{fake}\sim\mathbb{P}_{fake}}C(x_{fake})) and ![formula](https://render.githubusercontent.com/render/math?math=C(x_{fake})-\mathbb{E}_{x_{real}\sim\mathbb{P}_{real}}C(x_{real})).
 
 We can use keras.backend to deal with it, but that means we need to custom loss. We can also write custom layers to apply these computations to keras as a layer, and use Keras default loss to train the model.
 
